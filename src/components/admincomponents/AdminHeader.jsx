@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 
 const AdminHeader = () => {
+
+   const handleLogout = () => {
+    localStorage.removeItem('access')
+    localStorage.removeItem('refresh')
+    localStorage.removeItem('email')
+    localStorage.removeItem('username')
+    localStorage.removeItem('role')
+    localStorage.removeItem('is_staff')
+    navigate('/login')
+  }
   return (
     <>
     
@@ -17,6 +27,8 @@ const AdminHeader = () => {
 <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <ul className="space-y-2 font-medium">
+
+         
          <li>
             <Link to="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -78,8 +90,19 @@ const AdminHeader = () => {
                <span className="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
             </Link>
          </li>
+
+           <div className="flex justify-between items-center px-10 py-4 bg-white shadow-md">
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+        >
+          Logout
+        </button>
+      </div>
       </ul>
    </div>
+
+   
 </aside>
 
 <div className="p-4 sm:ml-64">

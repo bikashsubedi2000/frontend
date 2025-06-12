@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import  { useState } from 'react'
@@ -14,6 +14,7 @@ const Register = () => {
   const [dob, setDob] = useState('')
   const [password, setPassword] = useState('')
   const [cpassword, setCPassword] = useState('')
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
   e.preventDefault()
@@ -35,6 +36,7 @@ const Register = () => {
 
     if (response.status === 201) {
       // success logic here
+      navigate('/login')
     }
 
   } catch (error) {
@@ -114,7 +116,7 @@ const Register = () => {
                   </div>
                   <div>
                       <label for="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                      <input type="confirm-password" 
+                      <input type="password" 
                         value={cpassword}
                       onChange={(e)=>setCPassword(e.target.value)}
                       
@@ -130,7 +132,7 @@ const Register = () => {
                   </div>
                   <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Already have an account? <Link to="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
+                      Already have an account? <Link to="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
                   </p>
               </form>
           </div>
