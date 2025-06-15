@@ -17,11 +17,13 @@ const Login = () => {
         password
       })
 
-      localStorage.setItem('access', response.data.access)
+      // localStorage.setItem('access', response.data.access)
       localStorage.setItem('refresh', response.data.refresh)
       localStorage.setItem('email', response.data.email)
       localStorage.setItem('username', response.data.username)
       localStorage.setItem('is_staff',response.data.is_staff)
+      localStorage.setItem('access', response.data.accesstoken)  // or refreshtoken
+
 
       if (response.data.is_staff){
         navigate('/admin')
