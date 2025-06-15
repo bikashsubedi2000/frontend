@@ -59,7 +59,8 @@ const AddBlog = () => {
                 // toast.success('Blog added successfully!');
                 navigate('/admin/addblog');
             } else {
-                // toast.error('Registration failed. Please try again!');
+               
+                console.log(' Please try again!')
             }
         } catch (err) {
             // toast.error("Add blog failed");
